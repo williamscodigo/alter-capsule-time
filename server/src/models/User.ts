@@ -5,7 +5,6 @@ import bcrypt from 'bcrypt';
 interface IUser extends Document {
   username: string;
   email: string;
-  name: string;
   password: string;
   capsules: Schema.Types.ObjectId[];
   isCorrectPassword(password: string): Promise<boolean>;
@@ -25,11 +24,6 @@ const userSchema = new Schema<IUser>(
       required: true,
       unique: true,
       match: [/.+@.+\..+/, 'Must match an email address!'],
-    },
-    name: {
-      type: String,
-      required: true,
-      trim: true,
     },
     password: {
       type: String,
