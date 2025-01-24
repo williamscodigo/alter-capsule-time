@@ -54,7 +54,9 @@ const SignupForm = () => {
 
       Auth.login(data.addUser.token);
     } catch (e) {
-      console.error(e);
+      // display username or email already exists
+      setError("The provided username or email is already in use.");
+      // console.error(e);
     }
   };
 
