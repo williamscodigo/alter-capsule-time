@@ -5,7 +5,7 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
-    name: String
+    # name: String
     password: String
     capsules: [capsule]!
   }
@@ -31,7 +31,7 @@ const typeDefs = `
   input UserInput {
     username: String!
     email: String!
-    name: String!
+    # name: String!
     password: String!
   }
   
