@@ -3,7 +3,6 @@ import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import StyledButton from './StyledButton';
-import StyledCard from './StyledCard';
 
 import Auth from '../utils/auth';
 
@@ -60,10 +59,12 @@ const SignupForm = () => {
         JSON.stringify(data.addUser.user)
       );
 
-      //testing
-      setTimeout(() => {
-        Auth.login(data.addUser.token);
-      }, 9000);
+      //testing - to display returned user info
+      // setTimeout(() => {
+      //   Auth.login(data.addUser.token);
+      // }, 9000);
+
+      Auth.login(data.addUser.token);
     } catch (e) {
       // display username or email already exists
       setError("The provided username or email is already in use.");

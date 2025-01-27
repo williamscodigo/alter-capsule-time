@@ -12,6 +12,7 @@ import theme from './theme';
 import GlobalStyles from './GlobalStyles';
 import Container from './components/Container';
 import Background from './components/Background';
+import AddCapsuleService from './components/AddCapsuleService';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -41,7 +42,9 @@ function App() {
         <GlobalStyles />
         <Background>
           <Container >
-            <Outlet />
+            <AddCapsuleService >
+              <Outlet />
+            </AddCapsuleService>
           </Container>
         </Background>
       </ThemeProvider>

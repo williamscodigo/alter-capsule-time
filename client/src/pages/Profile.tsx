@@ -14,17 +14,21 @@ const Profile = () => {
   
 
   return (
-    <main className=''>
+    <>
       <Header />
       <main>
         {Auth.loggedIn() ? (
-          <p>you are logged in!</p>
+          <div>
+          <h2>Profile Page</h2>
+          <p>manage capsule - delete, not allowed to open (blurry)</p>
+          <div>display unlock capsules</div>
+          </div>
         ) : ( 
           <p>you need to be logged in to see this content!</p>
         )}
       </main>
       <Footer />
-    </main>
+    </>
   );
 };
 
