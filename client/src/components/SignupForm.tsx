@@ -54,7 +54,9 @@ const SignupForm = () => {
 
       Auth.login(data.addUser.token);
     } catch (e) {
-      console.error(e);
+      // display username or email already exists
+      setError("The provided username or email is already in use.");
+      // console.error(e);
     }
   };
 
@@ -62,12 +64,6 @@ const SignupForm = () => {
         <div className="card">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
               <form onSubmit={handleFormSubmit}>
                 <div>
                 <label className="block">Username</label>
@@ -117,11 +113,10 @@ const SignupForm = () => {
                 />
                 </div>
 
-                <StyledButton type='submit' primary>
+                <StyledButton type='submit' primary={true}>
                   Submit
                 </StyledButton>
               </form>
-            )}
 
 {error && <p className="error-message">{error}</p>}
           </div>
