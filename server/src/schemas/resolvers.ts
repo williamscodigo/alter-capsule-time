@@ -57,7 +57,7 @@ const resolvers = {
       return await Capsule.findOne({ _id: CapsuleId });
     },
     sharedCapsules: async () => {
-      return await Capsule.find({"share": 'True'});
+      return await Capsule.find({share: true});
     },
   },
   Mutation: {

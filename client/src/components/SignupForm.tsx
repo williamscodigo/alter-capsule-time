@@ -1,9 +1,9 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
-import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import StyledButton from './StyledButton';
+import StyledCard from './StyledCard';
 
 import Auth from '../utils/auth';
 
@@ -14,7 +14,7 @@ const SignupForm = () => {
     password: '',
     confirmPassword: ''
   });
-  const [addUser, { data }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
   const [error, setError] = useState("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +52,18 @@ const SignupForm = () => {
         variables: { input: { ...userFormData } },
       });
 
-      Auth.login(data.addUser.token);
+      console.log("signup data: ", data);
+
+      // Store user info (excluding password) in local storage
+      localStorage.setItem(
+        "user",
+        JSON.stringify(data.addUser.user)
+      );
+
+      //testing
+      setTimeout(() => {
+        Auth.login(data.addUser.token);
+      }, 9000);
     } catch (e) {
       // display username or email already exists
       setError("The provided username or email is already in use.");
@@ -61,7 +72,7 @@ const SignupForm = () => {
   };
 
   return (
-        <div className="card">
+    <div className="card">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
               <form onSubmit={handleFormSubmit}>
