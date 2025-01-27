@@ -24,33 +24,28 @@ export const ADD_USER = gql`
 }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation AddThought($input: ThoughtInput!) {
-    addThought(input: $input) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
+export const ADD_CAPSULE = gql`
+mutation AddCapsule($input: CapsuleInput!) {
+  addCapsule(input: $input) {
+    _id
+    capsuleMessage
   }
+}
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
-    }
-  }
-`;
+//should we allow comments to capsules?
+// export const ADD_COMMENT = gql`
+//   mutation addComment($thoughtId: ID!, $commentText: String!) {
+//     addComment(thoughtId: $thoughtId, commentText: $commentText) {
+//       _id
+//       thoughtText
+//       thoughtAuthor
+//       createdAt
+//       comments {
+//         _id
+//         commentText
+//         createdAt
+//       }
+//     }
+//   }
+// `;

@@ -15,9 +15,7 @@ export default function Dashboard() {
   });
 
   const { loading, data, error } = Auth.loggedIn()
-    ? useQuery(QUERY_SHARED_CAPSULES, {
-        skip: cachedCapsules.length > 0, // Skip query if we already have cached data
-      })
+    ? useQuery(QUERY_SHARED_CAPSULES)
     : { loading: false, data: null };
 
   useEffect(() => {
@@ -33,7 +31,19 @@ export default function Dashboard() {
     return <div>Error loading capsules.</div>;
   }
 
-  const capsules = cachedCapsules;
+  // Filter and sort capsules by unlockDate
+  const processCapsules = (capsules: any[]) => {
+    const now = new Date();
+    return capsules
+      .filter((capsule) => new Date(capsule.unlockDate) <= now) // Only unlocked capsules
+      .sort((a, b) => new Date(b.unlockDate).getTime() - new Date(a.unlockDate).getTime()); // Sort by unlockDate descending
+  };
+
+  // Use either the fetched capsules or cached data
+  const capsules = data?.sharedCapsules || cachedCapsules;
+
+  // Apply filtering and sorting
+  const filteredCapsules = processCapsules(capsules);
 
   return (
     <DashboardLayout>
@@ -42,7 +52,7 @@ export default function Dashboard() {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <CapsuleList capsules={capsules} title="Public Capsules" />
+          <CapsuleList capsules={filteredCapsules} title="Public Capsules" />
         )}
       </MainContent>
       <Footer />

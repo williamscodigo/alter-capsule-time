@@ -2,7 +2,6 @@ import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import StyledButton from './StyledButton';
-import StyledCard from './StyledCard';
 
 import Auth from '../utils/auth';
 
@@ -47,10 +46,12 @@ const LoginForm = () => {
       );
   
       // Store token in Auth service
-      //testing
-      setTimeout(() => {
-        Auth.login(data.login.token);
-      }, 9000);
+      // testing - to display returned user info
+        // setTimeout(() => {
+        //   Auth.login(data.login.token);
+        // }, 9000);
+      
+      Auth.login(data.login.token);
     } catch (e) {
       // console.error(e);
       setError("Login failed. Please try again.");
