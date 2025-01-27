@@ -10,6 +10,8 @@ import { Outlet } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from './theme';
 import GlobalStyles from './GlobalStyles';
+import Container from './components/Container';
+import Background from './components/Background';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -37,11 +39,11 @@ function App() {
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <div className="background">
-          <div className="container">
+        <Background>
+          <Container >
             <Outlet />
-          </div>
-        </div>
+          </Container>
+        </Background>
       </ThemeProvider>
     </ApolloProvider>
   );

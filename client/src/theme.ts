@@ -1,9 +1,13 @@
+import ImagePath from './assets/purple-moon.webp';
+
 const theme = {
     colors: {
       primary: '#C466FF',
-      secondary: '#2e0f38',
-      third: '#1a2c54',
-      fourth: '#4d7b93',
+      secondary: '#065b83',
+      primaryButton: '#800080',
+      primaryButtonHover: '#B300B3',
+      secondaryButton: '#D8DFD8',
+      secondaryButtonHover: '#F4F6F4',
       success: '#28a745',
       danger: '#dc3545',
       warning: '#ffc107',
@@ -13,15 +17,10 @@ const theme = {
     },
     fonts: {
       body: "'Roboto', sans-serif",
-      heading: "'Montserrat', sans-serif",
+      heading: "'JetBrains Mono', monospace",
     },
-    fontSizes: {
-      small: '0.8rem',
-      medium: '1rem',
-      large: '1.2rem',
-    },
-    backgroundImages: {
-        main: 'assets/purple-moon.webp', // image path
+    backgroundImage: {
+        main: ImagePath, // image path
     },
   };
   
