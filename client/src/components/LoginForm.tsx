@@ -1,8 +1,8 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import StyledButton from './StyledButton';
+import StyledCard from './StyledCard';
 
 import Auth from '../utils/auth';
 
@@ -47,9 +47,12 @@ const LoginForm = () => {
       );
   
       // Store token in Auth service
-      Auth.login(data.login.token);
+      //testing
+      setTimeout(() => {
+        Auth.login(data.login.token);
+      }, 9000);
     } catch (e) {
-      console.error(e);
+      // console.error(e);
       setError("Login failed. Please try again.");
     }
   
@@ -61,7 +64,7 @@ const LoginForm = () => {
   
 
   return (
-        <div className="card">
+    <div className="card">
           <h4 className="card-header">Login</h4>
           <div className="card-body">
               <form onSubmit={handleFormSubmit}>
@@ -96,7 +99,7 @@ const LoginForm = () => {
 
             {error && <p className="error-message">{error}</p>}
           </div>
-          </div>
+         </div>
   );
 };
 

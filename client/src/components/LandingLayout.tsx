@@ -17,31 +17,33 @@ const LandingLayout = styled.div`
     
   }
 
-      /* card styles */
   .card {
     background-color: #fff;
-    color: #000;
-    max-width: 500px;
-    min-height: 416px;
-    padding: 32px;
-    border-radius: 10px;
-    margin: 16px 0;
+  color: #000;
+  max-width: 500px;
+  min-height: 416px;
+
+  padding: 32px;
+  border-radius: 10px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
   }
-  
+
   .card-header {
     font-size: 40px;
     text-align: center;
   }
 
+  
+  /* form styles */
 
-  .card-body form {
+  form {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  
-  /* form styles */
   form > div {
     margin-bottom: 8px;
   }
