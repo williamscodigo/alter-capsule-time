@@ -4,6 +4,7 @@ import SignupForm from '../components/api/SignupForm';
 import Footer from '../components/layout/Footer';
 import StyledButton from '../components/common/StyledButton';
 import LandingLayout from '../components/layout/LandingLayout';
+import { Link } from 'react-router-dom'; // Link to navigate to other pages
 
 export default function Landing() {
 const [newVisitor, setNewVisitor] = useState(true);
@@ -15,7 +16,7 @@ return (
           <h1>Welcome to Capsule Time</h1>
           <p>In this application, you can send a message to your future self! How cool is that? If that doesn't catch your attention, how does reading about public capsules sound? We know you're curious—log in or create an account to find out more.</p>
 
-          <div>more content...</div>
+          <Link to="/AboutUs" style={{color: "#1a73e8", textDecoration: "none", fontWeight: "bold"}}>Learn more about us</Link> {/* Link to navigate to other pages */}
         </div>
         <div className='forms-card'>
           <div>
