@@ -1,10 +1,10 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
-import StyledButton from './StyledButton';
+import { ADD_USER } from '../../utils/mutations';
+import StyledButton from '../common/StyledButton';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const SignupForm = () => {
   const [formState, setFormState] = useState({
@@ -58,11 +58,6 @@ const SignupForm = () => {
         "user",
         JSON.stringify(data.addUser.user)
       );
-
-      //testing - to display returned user info
-      // setTimeout(() => {
-      //   Auth.login(data.addUser.token);
-      // }, 9000);
 
       Auth.login(data.addUser.token);
     } catch (e) {

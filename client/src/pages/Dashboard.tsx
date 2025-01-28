@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { DashboardLayout, MainContent } from "../components/DashboardLayout";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import CapsuleList from "../components/CapsuleList";
+import { DashboardLayout, MainContent } from "../components/layout/DashboardLayout";
+import Footer from "../components/layout/Footer";
+import Header from "../components/layout/Header";
+import CapsuleList from "../components/common/CapsuleList";
 import Auth from "../utils/auth";
 import { QUERY_SHARED_CAPSULES } from "../utils/queries";
 

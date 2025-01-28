@@ -1,8 +1,8 @@
 import React from 'react';
-import FloatingButton from './FloatingButton';
+import FloatingButton from '../common/FloatingButton';
 import { useMutation } from '@apollo/client';
-import { ADD_CAPSULE } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { ADD_CAPSULE } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 interface AddCapsuleServiceProps {
   children: React.ReactNode;

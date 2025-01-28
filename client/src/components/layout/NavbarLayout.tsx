@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Navbar = styled.nav`
+const NavbarLayout = styled.nav`
     display: flex;
     justify-content: space-between;
     margin: 1rem 0 2rem 0;
@@ -16,4 +16,4 @@ const Navbar = styled.nav`
     }
 `;
 
-export default Navbar;
+export default NavbarLayout;

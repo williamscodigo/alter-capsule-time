@@ -1,6 +1,6 @@
-import CapsuleLayout from './CapsuleLayout';
+import CapsuleLayout from '../layout/CapsuleLayout';
 import StyledButton from './StyledButton';
-import formatDateTime from '../utils/formatDateTime';
+import formatDateTime from '../../utils/formatDateTime';
 
 interface Capsule {
     _id: string;

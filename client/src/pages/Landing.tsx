@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import LoginForm from '../components/LoginForm';
-import SignupForm from '../components/SignupForm';
-import Footer from '../components/Footer';
-import StyledButton from '../components/StyledButton';
-import LandingLayout from '../components/LandingLayout';
+import LoginForm from '../components/api/LoginForm';
+import SignupForm from '../components/api/SignupForm';
+import Footer from '../components/layout/Footer';
+import StyledButton from '../components/common/StyledButton';
+import LandingLayout from '../components/layout/LandingLayout';
 
 export default function Landing() {
 const [newVisitor, setNewVisitor] = useState(true);
