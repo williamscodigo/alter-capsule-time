@@ -6,10 +6,10 @@ const typeDefs = `
     username: String
     email: String
     password: String
-    capsules: [capsule]!
+    capsules: [Capsule]!
   }
 
-  type capsule {
+  type Capsule {
     _id: ID
     capsuleMessage: String
     capsuleAuthor: String
@@ -20,7 +20,7 @@ const typeDefs = `
   }
 
  
-  input capsuleInput {
+  input CapsuleInput {
     capsuleMessage: String!
     capsuleAuthor: String!
     share: Boolean!
@@ -41,17 +41,19 @@ const typeDefs = `
 
 
   type Query {
+
     sharedCapsules: [capsule]
     Capsule(capsuleId: ID!): capsule
     me: User
+
     
   }
 
   type Mutation {
     addUser(input: UserInput!): Auth
     login(email: String!, password: String!): Auth
-    addCapsule(input: capsuleInput!): capsule
-    removeCapsule(capsuleId: ID!): capsule
+    addCapsule(input: CapsuleInput!): Capsule
+    removeCapsule(capsuleId: ID!): Capsule
 
   }
 `;

@@ -64,6 +64,7 @@ const resolvers = {
         return User.findOne({ _id: context.user._id }).populate('capsules');
       }
       throw new AuthenticationError('Could not authenticate user.');
+
     },
   },
   Mutation: {

@@ -1,39 +1,46 @@
 import { Link } from 'react-router-dom';
 import { type MouseEvent} from 'react';
 import Auth from '../utils/auth';
+import Navbar from './Navbar';
+import StyledButton from './StyledButton';
 
 const Header = () => {
   const logout = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+
+    //remove user data from local storage
+    localStorage.removeItem("user");
+    
     // Logs the user out by calling the logout method from Auth
     Auth.logout();
   };
   return (
-    <header className="nav">
+    <header>
+      <Navbar>
         <div>
-          <Link className="" to="/">
+          <Link style={{color: '#C466FF'}} to="/">
             <h1>Capsule Time</h1>
           </Link>
-          <p className="">Get into the mind of a programmer.</p>
         </div>
         <div>
-          {/* Checking if the user is logged in to conditionally render profile link and logout button */}
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {/* Retrieving the logged-in user's profile to display the username */}
-                {Auth.getProfile().data.username}'s profile
+          <ul className='nav'>
+            <li>
+              <Link to="/profile">
+                <StyledButton primary>Profile</StyledButton>
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <h2>YOU NEED TO LOGIN!</h2>
-            </>
-          )}
+            </li>
+            <li>
+              <Link to="/capsules"><StyledButton primary>Capsules</StyledButton></Link>
+            </li>
+            <li>
+              <Link to="/about"><StyledButton primary>About</StyledButton></Link>
+            </li>
+            <li>
+            <StyledButton onClick={logout}>Logout</StyledButton>
+            </li>
+          </ul>
         </div>
+        </Navbar>
     </header>
   );
 };

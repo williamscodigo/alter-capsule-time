@@ -1,14 +1,14 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import StyledButton from './StyledButton';
+import StyledCard from './StyledCard';
 
 import Auth from '../utils/auth';
 
 const LoginForm = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { data }] = useMutation(LOGIN_USER);
+  const [login] = useMutation(LOGIN_USER);
   const [error, setError] = useState("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,42 +22,51 @@ const LoginForm = () => {
 
   const handleFormSubmit = async (event: FormEvent) => {
     event.preventDefault();
-
+  
     // Check if fields are filled
-    if (!formState.email || !formState.password ) {
+    if (!formState.email || !formState.password) {
       setError("All fields are required.");
       return;
     }
-
+  
     // If validation passes, clear error message
     setError("");
-
+  
     try {
       const { data } = await login({
         variables: { ...formState },
       });
-
-      Auth.login(data.login.token);
+  
+      // Store user info (excluding password) in local storage
+      //log user
+      console.log("loggin user data: ", data.login.user);
+      // const { email, username, _id, capsules } = data.login.user;
+      localStorage.setItem(
+        "user",
+        JSON.stringify(data.login.user)
+      );
+  
+      // Store token in Auth service
+      //testing
+      setTimeout(() => {
+        Auth.login(data.login.token);
+      }, 9000);
     } catch (e) {
-      console.error(e);
+      // console.error(e);
+      setError("Login failed. Please try again.");
     }
-
+  
     setFormState({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
   };
+  
 
   return (
-        <div className="card">
+    <div className="card">
           <h4 className="card-header">Login</h4>
           <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
               <form onSubmit={handleFormSubmit}>
                 <div>
                 <label className="block text-gray-700">Email</label>
@@ -83,15 +92,14 @@ const LoginForm = () => {
                 />
                 </div>
 
-                <StyledButton type='submit' primary>
+                <StyledButton type='submit' primary={true}>
                   Submit
                 </StyledButton>
               </form>
-            )}
 
             {error && <p className="error-message">{error}</p>}
           </div>
-        </div>
+         </div>
   );
 };
 
