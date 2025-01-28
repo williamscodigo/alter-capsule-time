@@ -41,12 +41,9 @@ const typeDefs = `
 
 
   type Query {
-
-    sharedCapsules: [capsule]
-    Capsule(capsuleId: ID!): capsule
+    sharedCapsules: [Capsule]
+    Capsule(capsuleId: ID!): Capsule
     me: User
-
-    
   }
 
   type Mutation {
@@ -54,7 +51,6 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addCapsule(input: CapsuleInput!): Capsule
     removeCapsule(capsuleId: ID!): Capsule
-
   }
 `;
 

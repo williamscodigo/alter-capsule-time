@@ -44,9 +44,6 @@ const LoginForm = () => {
       );
   
       // Store token in Auth service
-      
-      //debugger
-      console.log("login data: ", data);
 
       Auth.login(data.login.token);
     } catch (e) {
