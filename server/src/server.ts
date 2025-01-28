@@ -6,11 +6,17 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { typeDefs, resolvers } from './schemas/index.js';
 import { authenticateToken } from './utils/auth.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const server = new ApolloServer({
   typeDefs,
   resolvers
 });
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+// console.log(path.join(__dirname, '../../client/index.html'));
 
 const startApolloServer = async () => {
   await server.start();
@@ -29,10 +35,11 @@ const startApolloServer = async () => {
   ));
 
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
+    app.use(express.static(path.join(__dirname, '../../client/dist')));
 
     app.get('*', (_req: Request, res: Response) => {
-      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+      
+      res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
     });
   }
 
