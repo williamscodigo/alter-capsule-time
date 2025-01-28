@@ -4,7 +4,7 @@ import Dashboard from './Dashboard';
 
 export default function Home() { 
 
-  return ( // Login Form UI with conditional rendering
+  return (
       <>
         {Auth.loggedIn() ? <Dashboard /> : <Landing />}
       </>

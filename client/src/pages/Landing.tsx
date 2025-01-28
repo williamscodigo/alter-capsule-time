@@ -1,23 +1,25 @@
 import { useState } from 'react';
-import LoginForm from '../components/LoginForm';
-import SignupForm from '../components/SignupForm';
-import Footer from '../components/Footer';
-import StyledButton from '../components/StyledButton';
+import LoginForm from '../components/api/LoginForm';
+import SignupForm from '../components/api/SignupForm';
+import Footer from '../components/layout/Footer';
+import StyledButton from '../components/common/StyledButton';
+import LandingLayout from '../components/layout/LandingLayout';
 import { Link } from 'react-router-dom'; // Link to navigate to other pages
 
 export default function Landing() {
 const [newVisitor, setNewVisitor] = useState(true);
 
 return (
-    <div className='landing-layout'>
-          <main className='grid-2'>
+    <LandingLayout>
+        <main className='grid-two-column'>
         <div className='info-card'> 
-          <h1 className='primary-color'>Welcome to Capsule Time</h1>
-          <p>In this application you can send a message to your future you! how cool is that. If that doesn't catch your attention, how about learning more about <span className='secondary-color'>public capsules</span> ? We know you're curious, so login or create an account.</p>
+          <h1>Welcome to Capsule Time</h1>
+          <p>In this application, you can send a message to your future self! How cool is that? If that doesn't catch your attention, how does reading about public capsules sound? We know you're curious—log in or create an account to find out more.</p>
 
           <Link to="/AboutUs" style={{color: "#1a73e8", textDecoration: "none", fontWeight: "bold"}}>Learn more about us</Link> {/* Link to navigate to other pages */}
         </div>
         <div className='forms-card'>
+          <div>
           {newVisitor ? (
             // Login Form 
             <LoginForm />
@@ -36,9 +38,10 @@ return (
             {newVisitor ? 'Sign Up' : 'Login'}
             </StyledButton>
           </p>
+          </div>
         </div>
         </main>
         <Footer />
-      </div>
+    </LandingLayout>
         ) 
 }

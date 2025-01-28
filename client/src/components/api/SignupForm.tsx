@@ -1,11 +1,10 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
-import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
-import StyledButton from './StyledButton';
+import { ADD_USER } from '../../utils/mutations';
+import StyledButton from '../common/StyledButton';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const SignupForm = () => {
   const [formState, setFormState] = useState({
@@ -14,7 +13,7 @@ const SignupForm = () => {
     password: '',
     confirmPassword: ''
   });
-  const [addUser, { data }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
   const [error, setError] = useState("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +51,12 @@ const SignupForm = () => {
         variables: { input: { ...userFormData } },
       });
 
+      // Store user info (excluding password) in local storage
+      localStorage.setItem(
+        "user",
+        JSON.stringify(data.addUser.user)
+      );
+
       Auth.login(data.addUser.token);
     } catch (e) {
       // display username or email already exists
@@ -61,15 +66,9 @@ const SignupForm = () => {
   };
 
   return (
-        <div className="card">
+    <div className="card">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
               <form onSubmit={handleFormSubmit}>
                 <div>
                 <label className="block">Username</label>
@@ -119,11 +118,10 @@ const SignupForm = () => {
                 />
                 </div>
 
-                <StyledButton type='submit' primary>
+                <StyledButton type='submit' primary={true}>
                   Submit
                 </StyledButton>
               </form>
-            )}
 
 {error && <p className="error-message">{error}</p>}
           </div>
