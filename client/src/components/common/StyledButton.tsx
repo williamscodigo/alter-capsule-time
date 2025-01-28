@@ -1,20 +1,36 @@
 import styled from 'styled-components';
 
-// Prevent the 'primary' prop from being passed to the DOM and set default value to false
+// Prevent the 'buttonType' prop from being passed to the DOM
 const StyledButton = styled.button.withConfig({
-  shouldForwardProp: (prop) => prop !== 'primary', // Do not forward 'primary' to the DOM
-})<{ primary?: boolean }>`
-  background-color: ${(props) => (props.primary ?? false ? props.theme.colors.primaryButton : props.theme.colors.secondaryButton)};
-  color: ${(props) => (props.primary ?? false ? '#fff' : '#000')};
+  shouldForwardProp: (prop) => prop !== 'buttonType', // Do not forward 'buttonType' to the DOM
+})<{ buttonType?: 'primary' | 'default' | 'delete' }>`
+  background-color: ${(props) =>
+    props.buttonType === 'primary'
+      ? props.theme.colors.primaryButton
+      : props.buttonType === 'delete'
+      ? props.theme.colors.deleteButton
+      : props.theme.colors.defaultButton};
+  color: ${(props) =>
+    props.buttonType === 'primary' || props.buttonType === 'delete'
+      ? '#fff'
+      : '#000'};
   border: none;
   border-radius: 4px;
-  padding: ${(props) => (props.primary ?? false ? '10px 20px' : '8px 16px')};
+  padding: ${(props) =>
+    props.buttonType === 'primary' || props.buttonType === 'delete'
+      ? '10px 20px'
+      : '8px 16px'};
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: ${(props) => (props.primary ?? false ? props.theme.colors.primaryButtonHover : props.theme.colors.secondaryButtonHover)};
+    background-color: ${(props) =>
+      props.buttonType === 'primary'
+        ? props.theme.colors.primaryButtonHover
+        : props.buttonType === 'delete'
+        ? props.theme.colors.deleteButtonHover
+        : props.theme.colors.defaultButtonHover};
   }
 `;
 

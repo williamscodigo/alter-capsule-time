@@ -87,7 +87,7 @@ const LoginForm = () => {
                 />
                 </div>
 
-                <StyledButton type='submit' primary={true}>
+                <StyledButton type='submit' buttonType='primary'>
                   Submit
                 </StyledButton>
               </form>
