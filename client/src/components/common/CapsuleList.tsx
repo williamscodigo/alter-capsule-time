@@ -1,7 +1,6 @@
-// Import `<Link>` component from React Router for internal hyperlinks
-import { Link } from 'react-router-dom';
-import CapsuleLayout from './CapsuleLayout';
+import CapsuleLayout from '../layout/CapsuleLayout';
 import StyledButton from './StyledButton';
+import formatDateTime from '../../utils/formatDateTime';
 
 interface Capsule {
     _id: string;
@@ -37,12 +36,13 @@ const CapsuleList: React.FC<CapsuleListProps> = ({ capsules, title }) => {
               <p>{capsule.capsuleMessage}</p>
             </div>
             <p className='date'>
-                created this capsule on {capsule.createdAt}
+                created date: {formatDateTime(capsule.createdAt)}
             </p>  
-            {/* not sure if a single capsule page will be created! */}
-            <Link to={`/capsule/${capsule._id}`}>
-              <StyledButton>View Capsule</StyledButton>
-            </Link>
+            <p className='date'>
+                unlocked date: {formatDateTime(capsule.unlockDate)}
+            </p>  
+            {/* should we handle comments on capsules! */}
+            <StyledButton>Add Comment</StyledButton>
           </div>
           </CapsuleLayout>
         ))}

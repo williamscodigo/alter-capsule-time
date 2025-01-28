@@ -10,8 +10,9 @@ import { Outlet } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from './theme';
 import GlobalStyles from './GlobalStyles';
-import Container from './components/Container';
-import Background from './components/Background';
+import Container from './components/layout/Container';
+import Background from './components/layout/Background';
+import AddCapsuleService from './components/api/AddCapsuleService';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -41,7 +42,9 @@ function App() {
         <GlobalStyles />
         <Background>
           <Container >
-            <Outlet />
+            <AddCapsuleService >
+              <Outlet />
+            </AddCapsuleService>
           </Container>
         </Background>
       </ThemeProvider>
