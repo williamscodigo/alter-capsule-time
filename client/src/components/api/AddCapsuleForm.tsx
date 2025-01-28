@@ -4,11 +4,11 @@ import { useMutation } from '@apollo/client';
 import { ADD_CAPSULE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-interface AddCapsuleServiceProps {
+interface AddCapsuleProps {
   children: React.ReactNode;
 }
 
-const AddCapsuleService: React.FC<AddCapsuleServiceProps> = ({ children }) => {
+const AddCapsuleForm: React.FC<AddCapsuleProps> = ({ children }) => {
 
     // create addBook mutation
   const [addCapsule] = useMutation(ADD_CAPSULE);
@@ -40,4 +40,4 @@ const AddCapsuleService: React.FC<AddCapsuleServiceProps> = ({ children }) => {
   );
 };
 
-export default AddCapsuleService;
+export default AddCapsuleForm;

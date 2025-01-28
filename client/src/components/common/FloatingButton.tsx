@@ -152,7 +152,7 @@ const FloatingButton: React.FC<Props> = ({ onSubmit }) => {
             </div>
             {error && <p className="error-message">{error}</p>}
             <div className='flex'>
-            <StyledButton primary onClick={handleSubmit}>Submit</StyledButton>
+            <StyledButton buttonType='primary' onClick={handleSubmit}>Submit</StyledButton>
             </div>
           </Modal>
         </ModalBackground>
