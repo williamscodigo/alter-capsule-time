@@ -62,6 +62,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.1rem;
     margin: 0 0 1rem;
     line-height: 1.5;
+    letter-spacing: 0.5px;
   }
   
   ul,
@@ -100,6 +101,38 @@ const GlobalStyles = createGlobalStyle`
   
   .text-center {
     text-align: center;
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .capitalize {
+    text-transform: capitalize;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .small {
+    font-size: 0.8rem;
+  }
+
+  .medium {
+    font-size: 1.25rem;
+  }
+
+  .large {
+    font-size: 1.5rem;
   }
   
 `;
