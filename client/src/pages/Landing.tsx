@@ -16,7 +16,7 @@ return (
           <h1>Welcome to Capsule Time</h1>
           <p>In this application, you can send a message to your future self! How cool is that? If that doesn't catch your attention, how does reading about public capsules sound? We know you're curious—log in or create an account to find out more.</p>
 
-          <Link to="/AboutUs" style={{color: "#1a73e8", textDecoration: "none", fontWeight: "bold"}}>Learn more about us</Link> {/* Link to navigate to other pages */}
+          <Link to="/about" style={{color: "#1a73e8", textDecoration: "none", fontWeight: "bold"}}>Learn more about us</Link> {/* Link to navigate to other pages */}
         </div>
         <div className='forms-card'>
           <div>
