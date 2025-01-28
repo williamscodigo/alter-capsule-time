@@ -14,6 +14,16 @@ const ProfileLayout = styled.div`
   /* Optional: Hide the scrollbar for non-WebKit browsers */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+   .card {
+    background-color: #fff;
+  color: #000;
+  max-width: 100%;
+
+  padding: 32px;
+  border-radius: 10px;
+  margin: 16px 0;
+  }
 `;
 
 const MainContent = styled.main`

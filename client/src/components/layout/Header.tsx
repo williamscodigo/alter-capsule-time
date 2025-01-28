@@ -25,15 +25,20 @@ const Header = () => {
         <div>
           <ul className='nav'>
             <li>
-              <Link to="/profile">
-                <StyledButton primary>Profile</StyledButton>
+              <Link to="/">
+                <StyledButton buttonType='primary'>Home</StyledButton>
               </Link>
             </li>
             <li>
-              <Link to="/about"><StyledButton primary>About</StyledButton></Link>
+              <Link to="/profile">
+                <StyledButton buttonType='primary'>Profile</StyledButton>
+              </Link>
             </li>
             <li>
-            <StyledButton onClick={logout}>Logout</StyledButton>
+              <Link to="/about"><StyledButton buttonType='primary'>About</StyledButton></Link>
+            </li>
+            <li>
+            <StyledButton buttonType='default' onClick={logout}>Logout</StyledButton>
             </li>
           </ul>
         </div>

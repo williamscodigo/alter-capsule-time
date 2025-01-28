@@ -36,13 +36,21 @@ mutation AddCapsule($input: CapsuleInput!) {
 }
 `;
 
+export const REMOVE_CAPSULE = gql`
+  mutation RemoveCapsule($capsuleId: ID!) {
+    removeCapsule(capsuleId: $capsuleId) {
+      _id
+    }
+  }
+`;
+
 //should we allow comments to capsules?
 // export const ADD_COMMENT = gql`
-//   mutation addComment($thoughtId: ID!, $commentText: String!) {
-//     addComment(thoughtId: $thoughtId, commentText: $commentText) {
+//   mutation addComment($capsuleId: ID!, $commentText: String!) {
+//     addComment(capsuleId: $capsuleId, commentText: $commentText) {
 //       _id
-//       thoughtText
-//       thoughtAuthor
+//       capsuleMessage
+//       capsuleAuthor
 //       createdAt
 //       comments {
 //         _id
