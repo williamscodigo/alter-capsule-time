@@ -26,7 +26,7 @@ interface CapsuleArgs {
 
 interface AddCapsuleArgs {
   input: {
-    CapsuleMessage: string;
+    capsuleMessage: string;
     capsuleAuthor: string;
     share: boolean;
     unlockDate: Date;
@@ -57,7 +57,14 @@ const resolvers = {
       return await Capsule.findOne({ _id: CapsuleId });
     },
     sharedCapsules: async () => {
-      return await Capsule.find({share: true});
+      return await Capsule.find({share: 'True', unlockDate:{$lt:Date.now()}}); 
+    },
+    me: async (_parent: any, _args: any, context: any) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('capsules');
+      }
+      throw new AuthenticationError('Could not authenticate user.');
+
     },
   },
   Mutation: {
@@ -91,6 +98,7 @@ const resolvers = {
 
       const token = signToken(user.username, user.email, user._id);
 
+      
 
       return { token, user };
     },
@@ -100,7 +108,7 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { Capsules: capsule._id } }
+          { $addToSet: { capsules: capsule._id } }
         );
 
         const sendAt = capsule.unlockDate;
