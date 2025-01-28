@@ -41,11 +41,8 @@ const typeDefs = `
 
 
   type Query {
-
-    sharedCapsules: [capsule]
-    Capsule(capsuleId: ID!): capsule
-    me: User
-
+    sharedCapsules: [Capsule]
+    Capsule(capsuleId: ID!): Capsule
     
   }
 
