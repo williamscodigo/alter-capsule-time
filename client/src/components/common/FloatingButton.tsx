@@ -77,7 +77,7 @@ const Modal = styled.div`
 
   .flex {
     display: flex;
-    justify-content: space-between;
+     justify-content: right;
     margin-top: 20px;
     }
 `;
@@ -114,6 +114,9 @@ const FloatingButton: React.FC<Props> = ({ onSubmit }) => {
       {showModal && (
         <ModalBackground onClick={() => setShowModal(false)}>
           <Modal onClick={(e) => e.stopPropagation()}>
+            <div className='flex'>
+            {/* <StyledButton onClick={() => setShowModal(false)}>Cancel</StyledButton> */}
+            </div>
             <h2>Create Capsule</h2>
             <div className='space-buttom'>
             <label htmlFor="message" className='block'>Message: </label>
@@ -150,7 +153,6 @@ const FloatingButton: React.FC<Props> = ({ onSubmit }) => {
             {error && <p className="error-message">{error}</p>}
             <div className='flex'>
             <StyledButton primary onClick={handleSubmit}>Submit</StyledButton>
-            <StyledButton onClick={() => setShowModal(false)}>Cancel</StyledButton>
             </div>
           </Modal>
         </ModalBackground>

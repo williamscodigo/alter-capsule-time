@@ -1,5 +1,6 @@
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
+import { ProfileLayout, MainContent } from '../components/layout/ProfileLayout';
 
 //This will be capsules
 // import ThoughtForm from '../components/ThoughtForm';
@@ -14,9 +15,9 @@ const Profile = () => {
   
 
   return (
-    <>
+    <ProfileLayout>
       <Header />
-      <main>
+      <MainContent>
         {Auth.loggedIn() ? (
           <div>
           <h2>Profile Page</h2>
@@ -26,9 +27,9 @@ const Profile = () => {
         ) : ( 
           <p>you need to be logged in to see this content!</p>
         )}
-      </main>
+      </MainContent>
       <Footer />
-    </>
+      </ProfileLayout>
   );
 };
 

@@ -9,7 +9,7 @@ const cleanDB = async (): Promise<void> => {
 
     // Delete documents from User collection
     await User.deleteMany({});
-    console.log('User collection cleaned.');
+    console.log('Capsule collection cleaned.');
 
   } catch (err) {
     console.error('Error cleaning collections:', err);
