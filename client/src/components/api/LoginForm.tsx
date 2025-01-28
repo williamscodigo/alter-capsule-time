@@ -1,9 +1,9 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
-import StyledButton from './StyledButton';
+import { LOGIN_USER } from '../../utils/mutations';
+import StyledButton from '../common/StyledButton';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const LoginForm = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -32,25 +32,22 @@ const LoginForm = () => {
     setError("");
   
     try {
+
       const { data } = await login({
         variables: { ...formState },
       });
   
       // Store user info (excluding password) in local storage
-      //log user
-      console.log("loggin user data: ", data.login.user);
-      // const { email, username, _id, capsules } = data.login.user;
       localStorage.setItem(
         "user",
         JSON.stringify(data.login.user)
       );
   
       // Store token in Auth service
-      // testing - to display returned user info
-        // setTimeout(() => {
-        //   Auth.login(data.login.token);
-        // }, 9000);
       
+      //debugger
+      console.log("login data: ", data);
+
       Auth.login(data.login.token);
     } catch (e) {
       // console.error(e);
