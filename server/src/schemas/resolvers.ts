@@ -57,7 +57,7 @@ const resolvers = {
       return await Capsule.findOne({ _id: CapsuleId });
     },
     sharedCapsules: async () => {
-      return await Capsule.find({share: 'True', unlockDate:{$lt:Date.now()}}); 
+      return await Capsule.find({share: true, unlockDate:{$lt:Date.now()}}); 
     },
     me: async (_parent: any, _args: any, context: any) => {
       if (context.user) {

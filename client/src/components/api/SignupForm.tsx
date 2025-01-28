@@ -51,8 +51,6 @@ const SignupForm = () => {
         variables: { input: { ...userFormData } },
       });
 
-      console.log("signup data: ", data);
-
       // Store user info (excluding password) in local storage
       localStorage.setItem(
         "user",

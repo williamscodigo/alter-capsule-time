@@ -8,14 +8,6 @@ export const LOGIN_USER = gql`
       _id
       username
       email
-      capsules {
-        _id
-        capsuleMessage
-        capsuleAuthor
-        share
-        unlockDate
-        createdAt
-      }
     }
     }
   }
@@ -28,21 +20,13 @@ export const ADD_USER = gql`
       _id
       username
       email
-      capsules {
-        _id
-        capsuleMessage
-        capsuleAuthor
-        share
-        unlockDate
-        createdAt
-      }
-      
     }
     token
   }
 }
 `;
 
+//must specify all fields returned from the mutation
 export const ADD_CAPSULE = gql`
 mutation AddCapsule($input: CapsuleInput!) {
   addCapsule(input: $input) {
