@@ -17,9 +17,9 @@ margin-bottom: 16px;
         font-size: 1.5rem;
     }
 
-    .date {
-    font-family: ${(props) => (props.theme.fonts.header)};
-    font-size: 0.8rem;
+    .dates {
+    font-family: ${(props) => (props.theme.fonts.heading)};
+    font-size: 0.5rem;
     font-style: italic;
     }
 
@@ -27,6 +27,8 @@ margin-bottom: 16px;
         font-size: 1.5rem;
         color: ${(props) => (props.theme.colors.secondary)};
     }
+
+    
 `;
 
 export default CapsuleLayout;

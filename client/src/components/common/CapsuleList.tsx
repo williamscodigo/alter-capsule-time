@@ -41,13 +41,15 @@ const CapsuleList: React.FC<CapsuleListProps> = ({ capsules, title, deleteFlag =
             <h4 className="author bold">
               {capsule.capsuleAuthor} <br />
             </h4>
-              <p className='message small'>{capsule.capsuleMessage}</p>
-            <p>
-                <span className='bold'>created date:</span> {formatDateTime(capsule.createdAt)}
-            </p>  
+              <p className='message'>{capsule.capsuleMessage}</p>
+              <div className='dates'>  
             <p>
                 <span className='bold'>unlocked date:</span> {formatDateTime(capsule.unlockDate)}
-            </p>  
+            </p> 
+            <p>
+                <span className='bold'>created date:</span> {formatDateTime(capsule.createdAt)}
+            </p>
+            </div> 
             {/* should we handle comments on capsules! */}
             {deleteFlag ? <RemoveCapsuleForm capsuleId={capsule._id} /> : <StyledButton>Add Comment</StyledButton>}
           </div>

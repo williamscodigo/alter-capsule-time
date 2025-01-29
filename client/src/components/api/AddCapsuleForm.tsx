@@ -23,8 +23,8 @@ const AddCapsuleForm: React.FC<AddCapsuleProps> = ({ children }) => {
         
         await addCapsule({ variables: { input: capsuleData } });
   
-        // If successful, reload the page
-        window.location.assign('/');
+        // If successful, reload the page based on the current URL
+        window.location.href = window.location.href;
         
       } catch (err) {
         //debugger;

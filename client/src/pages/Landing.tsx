@@ -18,7 +18,8 @@ return (
 
           <p>At the heart of this project is a desire to create meaningful connections—whether it's with your future self or others. Time Capsule Messenger isn't just an app; it's a way to preserve moments, emotions, and aspirations for the future. By blending technology with sentimentality, we've built a platform that transforms fleeting thoughts into timeless keepsakes. Every feature is designed to make your journey through time engaging and memorable.</p>
 
-          <Link to="/AboutUs" style={{color: "#1a73e8", textDecoration: "none", fontWeight: "bold"}}>Learn more about us</Link> {/* Link to navigate to other pages */}
+          <Link id='about-link' to="/about">Learn about us</Link>
+           {/* Link to navigate to other pages */}
         </div>
         <div className='forms-card'>
           <div>

@@ -70,6 +70,20 @@ const LandingLayout = styled.div`
     justify-content: center;
     align-items: center;
   }
+
+
+  #about-link {
+    display: inline-block;
+    background-color: #000;
+    color: white;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: #333;
+    }   
+  }
 `;
 
 export default LandingLayout;

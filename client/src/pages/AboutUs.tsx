@@ -3,6 +3,10 @@ import React from "react";
 import redPanda from "../assets/img/RedPanda.png";
 import wolf from "../assets/img/Wolf.png";
 import blackJaguar from "../assets/img/BlackJaguar.png";
+import Header from "../components/layout/Header";
+import {AboutLayout} from "../components/layout/AboutLayout";
+import {MainContent} from "../components/layout/AboutLayout";
+import Footer from "../components/layout/Footer";
 
 const AboutUs: React.FC = () => {
   const users = [
@@ -59,13 +63,16 @@ const AboutUs: React.FC = () => {
     backgroundColor: "#555",
   };
   const emailLink: React.CSSProperties = {
-    color: "#1a73e8",
+    color: "#fff",
     textDecoration: "none",
     fontWeight: "bold",
   };
 
   return (
-    <div>
+    <AboutLayout>
+      <Header />
+      <MainContent>
+      <div>
       <div style={aboutSectionStyle}>
         <h1 style={{ fontWeight: "bold", marginBottom: "15px", fontSize: "20px"}}>About Us</h1>
         <p>At our core, we are a team of passionate individuals dedicated to innovation, collaboration, and excellence. With diverse expertise and a shared vision, we strive to create solutions that are not only functional but also impactful.</p>
@@ -121,6 +128,9 @@ const AboutUs: React.FC = () => {
         ))}
       </div>
     </div>
+      </MainContent>
+      <Footer />
+    </AboutLayout>
   );
 };
 
