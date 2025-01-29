@@ -32,7 +32,7 @@
     {
 		"capsuleMessage": "this on should NOT show up on social!",
 		"capsuleAuthor": "chapaa",
-		"share": true,
+		"share": false,
 		"unlockDate": "2025-01-23T20:45:21-05:00"
 	}
 ]

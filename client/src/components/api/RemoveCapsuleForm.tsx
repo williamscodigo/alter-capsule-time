@@ -19,7 +19,9 @@ interface RemoveCapsuleProps {
   
         if (data?.removeCapsule?._id) {
           alert('Capsule deleted successfully!');
-          navigate('/profile'); // Navigate to another page, e.g., dashboard
+          //reaload base on current URL
+          window.location.href = window.location.href;
+
         } else {
           alert('Failed to delete capsule.');
         }

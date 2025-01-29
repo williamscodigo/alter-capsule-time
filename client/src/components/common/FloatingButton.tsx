@@ -78,7 +78,14 @@ const Modal = styled.div`
   .flex {
     display: flex;
      justify-content: right;
-    margin-top: 20px;
+    margin-top: 40px;
+    }
+
+    .flex-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
     }
 `;
 
@@ -130,6 +137,7 @@ const FloatingButton: React.FC<Props> = ({ onSubmit }) => {
               onChange={(e) => setCapsuleMessage(e.target.value)}
             />
             </div>
+            <div className='flex-2'>
             <div className='space-buttom'>
             <label htmlFor="unlockDate" className='block'>Unlock Date:</label>
             <input
@@ -140,15 +148,16 @@ const FloatingButton: React.FC<Props> = ({ onSubmit }) => {
               onChange={(e) => setUnlockDate(e.target.value)}
             />
             </div>
-            <div className='space-buttom'>
-             <label className='block'>
-              Share:
+            <div style={{marginTop: '24px'}}>
+             <label className='block' style={{marginRight: '4px'}}>
+              Share: {''}
               <input
                 type="checkbox"
                 checked={share}
                 onChange={(e) => setShare(e.target.checked)}
               />
             </label>
+            </div>
             </div>
             {error && <p className="error-message">{error}</p>}
             <div className='flex'>

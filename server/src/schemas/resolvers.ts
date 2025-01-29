@@ -21,7 +21,7 @@ interface LoginUserArgs {
 
 
 interface CapsuleArgs {
-  CapsuleId: string;
+  capsuleId: string;
 }
 
 interface AddCapsuleArgs {
@@ -53,8 +53,8 @@ const dateScalar = new GraphQLScalarType({
 const resolvers = {
   Date: dateScalar,
   Query: {
-    Capsule: async (_parent: any, { CapsuleId }: CapsuleArgs) => {
-      return await Capsule.findOne({ _id: CapsuleId });
+    Capsule: async (_parent: any, { capsuleId }: CapsuleArgs) => {
+      return await Capsule.findOne({ _id: capsuleId });
     },
     sharedCapsules: async () => {
       return await Capsule.find({share: true, unlockDate:{$lt:Date.now()}}); 
@@ -123,22 +123,22 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeCapsule: async (_parent: any, { CapsuleId }: CapsuleArgs, context: any) => {
-      if (context.user) {
-        const capsule = await Capsule.findOneAndDelete({
-          _id: CapsuleId
-        });
-
-        if (capsule) {
-          throw AuthenticationError;
-        }
-
-      
-
-        return capsule;
+    removeCapsule: async (_parent: any, { capsuleId }: CapsuleArgs, context: any) => {
+      console.log('Context User:', context.user);
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
       }
-      throw AuthenticationError;
-    },
+    
+      const capsule = await Capsule.findOneAndDelete({
+        _id: capsuleId
+      });
+    
+      if (!capsule) {
+        throw new Error('Capsule not found or already deleted.');
+      }
+    
+      return capsule;
+    },    
    
   },
 };

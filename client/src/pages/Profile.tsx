@@ -25,34 +25,29 @@ const Profile = () => {
   });
 
   useEffect(() => {
-    if (Auth.loggedIn()) {
-      refetch(); // Refetch the data on component load
-    }
-  }, [refetch]);
-
-  useEffect(() => {
     if (data) {
       const now = new Date();
-
-      // Separate private and public capsules
-      const privateCaps = data.me.capsules.filter(
-        (capsule: any) => capsule.share === false
-      );
-      const publicCaps = data.me.capsules.filter(
-        (capsule: any) => capsule.share === true
-      );
-
+  
+      // Separate and sort private and public capsules by unlockDate
+      const privateCaps = data.me.capsules
+        .filter((capsule: any) => capsule.share === false && new Date(capsule.unlockDate) < now)
+        .sort((b: any, a: any) => new Date(a.unlockDate).getTime() - new Date(b.unlockDate).getTime());
+  
+      const publicCaps = data.me.capsules
+        .filter((capsule: any) => capsule.share === true && new Date(capsule.unlockDate) < now)
+        .sort((b: any, a: any) => new Date(a.unlockDate).getTime() - new Date(b.unlockDate).getTime());
+  
       // Future capsules (unlockDate not yet met)
       const futureCapsules = data.me.capsules.filter(
         (capsule: any) => new Date(capsule.unlockDate) > now
       );
-
+  
       // Find the next capsule to unlock
       const nextCapsule = futureCapsules.sort(
         (a: any, b: any) =>
           new Date(a.unlockDate).getTime() - new Date(b.unlockDate).getTime()
       )[0];
-
+  
       setPrivateCapsules(privateCaps);
       setPublicCapsules(publicCaps);
       setNextCapsuleInfo({
@@ -62,8 +57,12 @@ const Profile = () => {
           : null,
         previewMessage: nextCapsule ? nextCapsule.capsuleMessage.slice(0, 4) + '...' : null,
       });
+  
+      // **Update local storage with the user data**
+      localStorage.setItem('user', JSON.stringify(data.me));
     }
   }, [data]);
+  
 
   if (!Auth.loggedIn()) {
     return (
