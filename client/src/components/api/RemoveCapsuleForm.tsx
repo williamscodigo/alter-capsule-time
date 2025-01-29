@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { REMOVE_CAPSULE } from '../../utils/mutations';
 import StyledButton from '../common/StyledButton';
@@ -8,7 +7,6 @@ interface RemoveCapsuleProps {
   }
   
   export default function RemoveCapsuleForm({ capsuleId }: RemoveCapsuleProps) {
-    const navigate = useNavigate();
     const [removeCapsule, { loading, error }] = useMutation(REMOVE_CAPSULE);
   
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

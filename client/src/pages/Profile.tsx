@@ -8,7 +8,7 @@ import { QUERY_ME } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
 const Profile = () => {
-  const { loading, error, data, refetch } = useQuery(QUERY_ME, {
+  const { loading, error, data } = useQuery(QUERY_ME, {
     skip: !Auth.loggedIn(), // Skip query if user is not logged in
   });
 
