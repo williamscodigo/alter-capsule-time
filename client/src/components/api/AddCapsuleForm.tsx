@@ -15,7 +15,8 @@ const AddCapsuleForm: React.FC<AddCapsuleProps> = ({ children }) => {
   const isLoggedIn = Auth.loggedIn();
 
   const handleCapsuleSubmit = async (capsuleData: { capsuleMessage: string; share: boolean; unlockDate: string; capsuleAuthor?: string }) => {
-    console.log('Capsule Submitted:', capsuleData);
+    //debugger;
+    // console.log('Capsule Submitted:', capsuleData);
     // Implement API call here to save the capsule
     try {
         //add login user username to capsuleData
